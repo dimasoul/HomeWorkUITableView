@@ -20,9 +20,6 @@ class PersonDetailsViewController: UIViewController {
     
         personPhoneLabel.text = "Phone: \(person.phone)"
         personEmailLabel.text = "Email: \(person.email)"
-        self.title = person.title        // Do any additional setup after loading the view.
+        self.title = person.title  
     }
-    
-
-
 }

@@ -12,8 +12,6 @@ class PersonsListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
     }
 
     // MARK: - Table view data source
@@ -27,7 +25,6 @@ class PersonsListViewController: UITableViewController {
         personList.count
     }
 
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "personName", for: indexPath)
         let person = personList[indexPath.row]
@@ -39,7 +36,6 @@ class PersonsListViewController: UITableViewController {
         return cell
     }
 
-
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -48,5 +44,4 @@ class PersonsListViewController: UITableViewController {
         let person = personList[indexPath.row]
         personDetailsVC.person = person
     }
-
 }
