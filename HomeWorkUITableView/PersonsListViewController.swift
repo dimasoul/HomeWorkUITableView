@@ -8,7 +8,8 @@
 import UIKit
 
 class PersonsListViewController: UITableViewController {
-
+    private var personList = Person.getPersonList()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,30 +24,29 @@ class PersonsListViewController: UITableViewController {
 */
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        0
+        personList.count
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "personName", for: indexPath)
-
+        let person = personList[indexPath.row]
+        var content = cell.defaultContentConfiguration()
+        content.text = person.title
+        
+        cell.contentConfiguration = content
+        
         return cell
     }
 
 
-   
-
-
-
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        guard let personDetailsVC = segue.destination as? PersonDetailsViewController else { return }
+        guard let indexPath = tableView.indexPathForSelectedRow else { return }
+        let person = personList[indexPath.row]
+        personDetailsVC.person = person
     }
-    */
 
 }
